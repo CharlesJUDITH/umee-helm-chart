@@ -1,2 +1,3 @@
-# umee-helm-chart
-Chart to install Umee node
+# umee-helm-charts
+
+Chart to install Umee node.
