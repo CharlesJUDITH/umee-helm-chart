@@ -18,7 +18,7 @@ if [ ! -d "$UMEE_HOME/data" ]
 then
 mkdir -p $UMEE_HOME/data
 # Init the chain
-/usr/bin/umeed init --chain-id "$UMEE_CHAIN_ID" "$UMEE_MONIKER"
+/bin/umeed init --chain-id "$UMEE_CHAIN_ID" "$UMEE_MONIKER"
 
 # If the node is a validator, do tx to create the validator
 # Make sure the Validator has fully synced before running 
@@ -40,7 +40,7 @@ mkdir -p $UMEE_HOME/data
 # fi
 
 cd "$UMEE_HOME/data" || exit
-curl -s "$UMEE_NET/genesis.json" > "$UMEE_HOME/config/genesis.json"
+curl -s "$UMEE_NET" > "$UMEE_HOME/config/genesis.json"
 if [ "$UMEE_STATESYNC_ENABLE" == true ]; then
   echo "state-sync is enabled, figure the right trust height & derive its hash"
 
