@@ -19,7 +19,7 @@ umee_node:
   # snapshot_provider can be either "polkachu" (2Gi), "autostake" (1Gi). Otherwise it'll default to a much larger in size.
   snapshot_provider: "polkachu"
   api_enable: "false"
-  moniker: my-moniker
+  moniker: umee-hackathon
   chainid: umee-1
   # disable PEX when nodes have issues with syncing / catching up / peer dial errors/flood
   minimum_gas_prices: 0.1uumee
@@ -214,24 +214,24 @@ snapshots:
 
 microk8s:
   enabled: true
-  hostpath: /data/umee
+  hostpath: /data/umee-fullnode
 
 # Used for mounting UMEE_HOME on a specific node
 local_storage:
   enabled: false
   capacity: 100Gi
-  path: /data/umee
+  path: /data/umee-fullnode
   host: ""
 
 # If the node is a validator
 validator:
-  enabled: true
+  enabled: false
   node_key: ""
   priv_key: ""
 
 # If the node is a fullnode (non-validator)
 fullnode:
-  enabled: false
+  enabled: true
 
 imagePullSecrets: []
 nameOverride: ""
