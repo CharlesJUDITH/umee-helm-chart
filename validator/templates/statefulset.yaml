@@ -117,8 +117,10 @@ spec:
           {{- if .Values.validator.enabled }}
             - name: node-key
               mountPath: /root/.umee/config/node_key.json
+              subPath: node_key.json
             - name: priv-validator-key
               mountPath: /root/.umee/config/priv_validator_key.json
+              subPath: priv_validator_key.json
           {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
@@ -252,6 +254,14 @@ spec:
         - name: app-toml
           configMap:
             name: app-toml
+      {{- if .Values.validator.enabled }}
+        - name: node-key
+          mountPath: /root/.umee/config/node_key.json
+          subPath: node_key.json
+        - name: priv-validator-key
+          mountPath: /root/.umee/config/priv_validator_key.json
+          subPath: priv_validator_key.json
+      {{- end }}
       {{- if .Values.microk8s.enabled }}
         - name: home
           hostPath:
